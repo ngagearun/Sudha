@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="automationpractice">
+<listeners>
+<listener class-name="com.automationpractice.testcases.TestListener" />
+<listener class-name="com.automationpractice.testcases.RetryListenerClass" />
+</listeners>
+<test name="RegressionTesting">
+<parameter name="browser" value="chrome"></parameter>
+<groups>
+<run>
+ <include name="smoke"></include>
+ <include name="regression"></include>
+</run>
+</groups>
+<classes>
+  <class name="com.automationpractice.testcases.ContactUs"></class>
+  <class name="com.automationpractice.testcases.SummaryCartPage"></class>
+  <class name="com.automationpractice.testcases.Womens"></class>
+</classes>
+</test>
+</suite>

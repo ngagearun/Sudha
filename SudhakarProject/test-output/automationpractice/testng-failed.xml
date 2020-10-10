@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [automationpractice]" parallel="none">
+  <parameter name="browser" value="chrome"/>
+  <listeners>
+    <listener class-name="com.automationpractice.testcases.TestListener"/>
+    <listener class-name="com.automationpractice.testcases.RetryListenerClass"/>
+  </listeners>
+  <test name="RegressionTesting(failed)" parallel="none">
+    <parameter name="browser" value="chrome"/>
+    <groups>
+      <run>
+        <include name="smoke"/>
+        <include name="regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.automationpractice.testcases.Womens">
+        <methods>
+          <include name="addtocartitemwithcartbutton"/>
+          <include name="tshirtpage"/>
+        </methods>
+      </class> <!-- com.automationpractice.testcases.Womens -->
+      <class name="com.automationpractice.testcases.ContactUs">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.automationpractice.testcases.ContactUs -->
+    </classes>
+  </test> <!-- RegressionTesting(failed) -->
+</suite> <!-- Failed suite [automationpractice] -->
