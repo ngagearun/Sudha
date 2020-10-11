@@ -16,12 +16,12 @@ public class ContactUs extends Reusable {
 	
 	@Test(priority=1,groups="smoke")
 	public static void verifysentmessage(){
-		
-		click(By.linkText("Contact us"));
-		dropdownselection(By.id("id_contact"),"Customer service");
-		sendText(By.id("email"), "test@gmail.com");
-		sendText(By.id("message"), "testing");
-		click(By.xpath("//*[@id='submitMessage']/span"));
+		report.startTest("ContactUs Testcase started to excute");
+		click(By.linkText("Contact us"),"clicking on contact us link");
+		dropdownselection(By.id("id_contact"),"Customer service","Selecting the customer service dropdowna value");
+		sendText(By.id("email"), "test@gmail.com","Enter the email id in contact us page");
+		sendText(By.id("message"), "testing","Enter the comments in meaasge box");
+		click(By.xpath("//*[@id='submitMessage']/span"),"clicking on submit button");
 		System.out.println(driver.findElement(By.xpath("//*[@id='center_column']/p")).isDisplayed());
 		
 	}

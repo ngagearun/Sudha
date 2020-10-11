@@ -17,12 +17,12 @@
     <classes>
       <class name="com.automationpractice.testcases.Womens">
         <methods>
-          <include name="addtocartitemwithcartbutton"/>
           <include name="tshirtpage"/>
         </methods>
       </class> <!-- com.automationpractice.testcases.Womens -->
       <class name="com.automationpractice.testcases.ContactUs">
         <methods>
+          <include name="verifysentmessage"/>
           <include name="tearDown"/>
           <include name="setup"/>
         </methods>

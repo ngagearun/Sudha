@@ -16,9 +16,14 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.test.AccessModifiers;
+import com.test.ExtentCustomizedReports;
 
-public class Reusable   {
+public class Reusable  extends ExtentCustomizedReports  {
+	static ExtentCustomizedReports ex;
+	
+
 	static String browsername="chrome";
 	
 	public static WebDriver driver;
@@ -36,10 +41,14 @@ public class Reusable   {
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 			driver.get("http://automationpractice.com/");
+			ex=new ExtentCustomizedReports();
 	}
 	
 	@AfterTest(groups={"regression","smoke","sanity"})
 	public static void tearDown(){
+		report.endTest(test);
+		report.flush();
+		report.close();
 		driver.close();
 	}
 	
@@ -62,20 +71,32 @@ public class Reusable   {
 	}
 	
 	
-public static void sendText(By locatorname,String value){
-		
+public static void sendText(By locatorname,String value,String stepname){
+		try{
 		driver.findElement(locatorname).sendKeys(value);
+		test.log(LogStatus.PASS, stepname);
+		}catch(Exception e){
+			
+		}
 	}
 	
-	public static void click(By locatorname){
+	public static void click(By locatorname,String stepname){
+		try{
 		driver.findElement(locatorname).click();
+		test.log(LogStatus.PASS, stepname);
+		}catch(Exception e){
+			
+		}
 	}
 	
 	public static void mousehover(By locatorname){
-		
+		try{
 		 action=new Actions(driver);
 	   WebElement ele=	driver.findElement(locatorname);
 		 action.moveToElement(ele).perform();
+		}catch(Exception e){
+			
+		}
 		
 	}
 	
@@ -84,9 +105,10 @@ public static void sendText(By locatorname,String value){
 		driver.switchTo().frame(index);
 	}
 
-	public static void dropdownselection(By locatorname,String text){
+	public static void dropdownselection(By locatorname,String text,String stepnamme){
 		Select select=new Select(driver.findElement(locatorname));
 		select.selectByVisibleText(text);
+		test.log(LogStatus.PASS, stepnamme);
 	}
 	
 	public static void scrollDown(){
